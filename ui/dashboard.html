@@ -15,15 +15,36 @@
             color: white;
             font-family: Arial, sans-serif;
             text-align: center;
+            display: none; /* Hide by default */
         }
         img {
             max-width: 100%;
             height: auto;
         }
     </style>
+    <script>
+        window.addEventListener('message', function(event) {
+            if (event.data.action === "openMDT") {
+                document.body.style.display = "flex";
+            }
+        });
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                document.body.style.display = "none";
+                fetch('https://ps-mdt/closeMDT', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ action: "closeMDT" })
+                });
+            }
+        });
+    </script>
 </head>
 <body>
     <h1>Happy April Fools From Project Sloth</h1>
-    <img src="https://www.icegif.com/wp-content/uploads/2023/01/icegif-162.gif" alt="Rick Roll">
+    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNjRhYXo3MXE5MXIybG1xYm5lcmF5N2trcTN1YzN3dXM4M2JmcnM5aSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/rYEAkYihZsyWs/giphy.gif" alt="Rick Roll">
 </body>
 </html>
