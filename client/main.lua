@@ -5,6 +5,6 @@ RegisterCommand("mdt", function()
     SetNuiFocus(true, true) -- Enables mouse and keyboard focus for NUI
 end, false)
 
-RegisterNUICallback('close', function()
+RegisterNUICallback('closeMDT', function()
 	SetNuiFocus(false, false)
 end)
